@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Портфолио разработчика</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Портфолио разработчика</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Link</th>
+        </tr>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project.title }}</td>
+            <td><a href="{{ project.link }}">{{ project.link }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/add_project" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title">
+        <label for="link">Link:</label>
+        <input type="text" id="link" name="link">
+        <input type="submit" value="Add Project">
+    </form>
+</body>
+</html>
